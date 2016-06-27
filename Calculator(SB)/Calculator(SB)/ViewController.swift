@@ -28,8 +28,15 @@ class ViewController: UIViewController {
 
     @IBAction func add(_ sender: UIButton) {
         
-        let result = Int(firstNumText.text!)! + Int(secondNumText.text!)!
-        resultLabel.text = "\(result)"
+        // 守护: 当输入框的内容输入的不是数字的话, 让它返回nil
+        guard let num1 = Int(firstNumText?.text ?? ""),
+                  num2 = Int(secondNumText?.text ?? "") else {
+                    
+                    return
+        }
+        
+        // let result = Int(firstNumText.text!)! + Int(secondNumText.text!)!
+        resultLabel.text = "\(num1 + num2)"
         
         
     }
@@ -37,27 +44,43 @@ class ViewController: UIViewController {
     @IBAction func minus(_ sender: UIButton) {
         
         
-        let result = Int(firstNumText.text!)! - Int(secondNumText.text!)!
-        resultLabel.text = "\(result)"
+        // let result = Int(firstNumText.text!)! - Int(secondNumText.text!)!
+        guard let num1 = Int(firstNumText?.text ?? ""),
+                  num2 = Int(secondNumText?.text ?? "") else {
+                
+                return
+        }
         
-        
+        // let result = Int(firstNumText.text!)! + Int(secondNumText.text!)!
+        resultLabel.text = "\(num1 - num2)"
         
     }
     
     @IBAction func product(_ sender: AnyObject) {
         
-        let result = Int(firstNumText.text!)! * Int(secondNumText.text!)!
-        resultLabel.text = "\(result)"
+        guard let num1 = Int(firstNumText?.text ?? ""),
+                  num2 = Int(secondNumText?.text ?? "") else {
+                
+                return
+        }
+        
+        // let result = Int(firstNumText.text!)! + Int(secondNumText.text!)!
+        resultLabel.text = "\(num1 * num2)"
         
         
     }
     
     @IBAction func divide(_ sender: UIButton) {
         
+        guard let num1 = Int(firstNumText?.text ?? ""),
+                  num2 = Int(secondNumText?.text ?? "") else {
+                
+                return
+        }
         
-        let result = Float(firstNumText.text!)! / Float(secondNumText.text!)!
-        resultLabel.text = "\(result)"
-        
+        // let result = Int(firstNumText.text!)! + Int(secondNumText.text!)!
+        resultLabel.text = "\(num1 / num2)"
+
         
     }
 
